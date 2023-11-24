@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  # Service WordPress
+  wordpress:
+    image: wordpress
+    container_name: conteneur-wordpress
+    volumes:
+      - ./wordpress:/var/www/html
+    ports:
+      - "8001"
+    restart: always
+    networks:
+      - reseau-eval
+
+  # Service MySQL (base de données)
+  mysql:
+    image: mysql
+    container_name: conteneur-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress_user
+      MYSQL_PASSWORD: wordpress_password
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    restart: always
+    networks:
+      - reseau-eval
+
+  # Service phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+    ports:
+      - "8081:80"
+    restart: always
+    depends_on:
+      - mysql
+    networks:
+      - mon-reseau
+
+networks:
+  mon-reseau:
+    driver: bridge

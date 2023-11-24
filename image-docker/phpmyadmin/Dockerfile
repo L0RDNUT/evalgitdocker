@@ -5,4 +5,4 @@ FROM phpmyadmin/phpmyadmin
 ENV PMA_ARBITRARY=1
 
 # Exposer le port 8003
-EXPOSE 8003
+EXPOSE 8002
