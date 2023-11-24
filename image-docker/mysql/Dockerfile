@@ -7,5 +7,5 @@ ENV MYSQL_DATABASE=wordpress
 ENV MYSQL_USER=wordpress_user
 ENV MYSQL_PASSWORD=wordpress_password
 
-# Exposer le port 3306
+# Exposer le port 8002
 EXPOSE 8002

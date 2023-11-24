@@ -14,8 +14,8 @@ RUN wget -qO- https://wordpress.org/latest.tar.gz | tar xvz -C /var/www/html --s
 # Activer le module rewrite pour Apache
 RUN a2enmod rewrite
 
-# Exposer le port 80
-EXPOSE 80
+# Exposer le port 8000
+EXPOSE 8000
 
 # Commande par défaut pour démarrer Apache
 CMD ["apache2-foreground"]
